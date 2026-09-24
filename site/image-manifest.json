@@ -1,0 +1,255 @@
+{
+  "c.e.o.jpg": {
+    "width": 577,
+    "height": 479,
+    "variants": [
+      {
+        "file": "c.e.o-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "Finrel-Image-300x257.jpg": {
+    "width": 300,
+    "height": 257,
+    "variants": []
+  },
+  "Finrel-Image-495x400.jpg": {
+    "width": 495,
+    "height": 400,
+    "variants": [
+      {
+        "file": "Finrel-Image-495x400-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "Finrel-Image-845x684.jpg": {
+    "width": 845,
+    "height": 684,
+    "variants": [
+      {
+        "file": "Finrel-Image-845x684-480.webp",
+        "width": 480
+      },
+      {
+        "file": "Finrel-Image-845x684-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "FINREL15-1210x423.jpg": {
+    "width": 1210,
+    "height": 423,
+    "variants": [
+      {
+        "file": "FINREL15-1210x423-480.webp",
+        "width": 480
+      },
+      {
+        "file": "FINREL15-1210x423-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "FINREL_PICTURE12-1210x423.jpg": {
+    "width": 1210,
+    "height": 423,
+    "variants": [
+      {
+        "file": "FINREL_PICTURE12-1210x423-480.webp",
+        "width": 480
+      },
+      {
+        "file": "FINREL_PICTURE12-1210x423-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "IMG-20220223-WA0007-495x400.jpg": {
+    "width": 495,
+    "height": 400,
+    "variants": [
+      {
+        "file": "IMG-20220223-WA0007-495x400-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "IMG-20220223-WA0007-845x684.jpg": {
+    "width": 845,
+    "height": 684,
+    "variants": [
+      {
+        "file": "IMG-20220223-WA0007-845x684-480.webp",
+        "width": 480
+      },
+      {
+        "file": "IMG-20220223-WA0007-845x684-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "IMG-20220607-WA0003-e1654775689487-300x292.jpg": {
+    "width": 300,
+    "height": 292,
+    "variants": []
+  },
+  "IMG-20220609-WA0003-300x225.jpg": {
+    "width": 300,
+    "height": 225,
+    "variants": []
+  },
+  "IMG-20220609-WA0003-495x400.jpg": {
+    "width": 495,
+    "height": 400,
+    "variants": [
+      {
+        "file": "IMG-20220609-WA0003-495x400-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "IMG-20220609-WA0003-845x684.jpg": {
+    "width": 845,
+    "height": 684,
+    "variants": [
+      {
+        "file": "IMG-20220609-WA0003-845x684-480.webp",
+        "width": 480
+      },
+      {
+        "file": "IMG-20220609-WA0003-845x684-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "IMG_2246-1500x1000.jpg": {
+    "width": 1500,
+    "height": 1000,
+    "variants": [
+      {
+        "file": "IMG_2246-1500x1000-480.webp",
+        "width": 480
+      },
+      {
+        "file": "IMG_2246-1500x1000-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "SAM_1373-1210x423.jpg": {
+    "width": 1210,
+    "height": 423,
+    "variants": [
+      {
+        "file": "SAM_1373-1210x423-480.webp",
+        "width": 480
+      },
+      {
+        "file": "SAM_1373-1210x423-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "SAM_1380-1210x423.jpg": {
+    "width": 1210,
+    "height": 423,
+    "variants": [
+      {
+        "file": "SAM_1380-1210x423-480.webp",
+        "width": 480
+      },
+      {
+        "file": "SAM_1380-1210x423-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "SAM_1382-1-1500x630.jpg": {
+    "width": 1500,
+    "height": 630,
+    "variants": [
+      {
+        "file": "SAM_1382-1-1500x630-480.webp",
+        "width": 480
+      },
+      {
+        "file": "SAM_1382-1-1500x630-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "SAM_1429-1210x423.jpg": {
+    "width": 1210,
+    "height": 423,
+    "variants": [
+      {
+        "file": "SAM_1429-1210x423-480.webp",
+        "width": 480
+      },
+      {
+        "file": "SAM_1429-1210x423-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "SAM_1442-495x400.jpg": {
+    "width": 495,
+    "height": 400,
+    "variants": [
+      {
+        "file": "SAM_1442-495x400-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "SAM_1512-495x400.jpg": {
+    "width": 495,
+    "height": 400,
+    "variants": [
+      {
+        "file": "SAM_1512-495x400-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "VETERINARY-1210x423.jpg": {
+    "width": 1210,
+    "height": 423,
+    "variants": [
+      {
+        "file": "VETERINARY-1210x423-480.webp",
+        "width": 480
+      },
+      {
+        "file": "VETERINARY-1210x423-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "EATRY-AT-OLOMI-BRANCH-1210x423.jpeg": {
+    "width": 1210,
+    "height": 423,
+    "variants": [
+      {
+        "file": "EATRY-AT-OLOMI-BRANCH-1210x423-480.webp",
+        "width": 480
+      },
+      {
+        "file": "EATRY-AT-OLOMI-BRANCH-1210x423-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "Finrel-Akala-300x225.jpeg": {
+    "width": 300,
+    "height": 225,
+    "variants": []
+  },
+  "Finrel-Apata.jpeg": {
+    "width": 300,
+    "height": 225,
+    "variants": []
+  }
+}
