@@ -1,19 +1,19 @@
 # Verification record
 
-Completed 24 September 2026.
+Initial checks: 24 September 2026. Presentation review: 25 September 2026.
 
 ## Automated checks
 
 - Build succeeds with no package installation and no runtime dependencies.
 - JavaScript syntax check passes.
-- `npm run check`: 9 HTML documents (8 pages and custom 404), 261 local links/assets, and 41 image instances pass.
+- `npm run check`: 10 HTML documents (9 pages and custom 404), 308 local links/assets, and 44 image instances pass.
 - Unique element IDs, one H1 per page, descriptions, image alt text/dimensions, branch phone formats and preserved form submission destinations checked.
 - Responsive WebP variants generated from original Finrel photography. Non-hero images are lazy-loaded. Font is hosted locally, with its OFL license included.
-- Page JavaScript is approximately 5 KB; shared CSS is approximately 37 KB, before compression.
+- No new dependencies added for the presentation refinements.
 
 ## Browser checks
 
-All eight pages checked for horizontal overflow at 320px, 768px, 1440px and 1920px viewport widths. A branch-heading overflow at 320px was corrected and rechecked. The homepage and mobile menu were also inspected at 390px.
+All nine pages checked for horizontal overflow, H1 count, broken loaded images and external-link attributes at 320px, 390px, 768px, 1024px, 1440px and 1920px widths: 54 page/viewport checks passed. A branch-heading overflow at 320px was corrected and rechecked. The homepage and mobile menu were also inspected at 390px.
 
 - Desktop and mobile hero, page headings, original logo, image crops, service presentation, About page, footer and form layouts inspected visually.
 - One service-gallery and one story section in the home DOM verified. The browser's full-page screenshot stitching produced visual duplication; individual viewport screenshots and DOM checks confirmed this was a capture artifact, not repeated site content.
@@ -51,6 +51,21 @@ Photography-backed text also uses dark overlays and was visually reviewed. No fo
 
 ## Integration limits
 
-No live messages, bookings, orders or customer data were sent during testing. Form POST field mapping is preserved from the original Finrel site, but successful receipt by Finrel remains unverified. The existing online store was not reachable via the research tool; its destination is preserved. Directions are address searches, not verified coordinates. Business confirmation items are recorded in the content audit.
+No live messages, bookings, orders or customer data were sent during testing. Form POST field mapping is preserved from the original Finrel site, but successful receipt by Finrel remains unverified. The existing online store failed DNS resolution and was also inaccessible through the research tool on 25 September. Shopping CTAs now offer a local fallback with call/branch options and a preserved external store link. Instagram and Facebook URLs returned HTTP 200 with the expected Finrel profile titles. Directions are address searches, not verified coordinates. Business confirmation items are recorded in the content audit.
 
-The original live website has not been modified or replaced. This is a complete local implementation and deployable static output.
+The original live website has not been modified or replaced. The presentation version is deployed separately to finrel-web.vercel.app.
+
+## Presentation refinement checks — 25 September
+
+- Retained the established editorial layouts, original logo, colour palette and photography.
+- Moved optional phone help after the appointment form on mobile; retained the side-by-side desktop layout.
+- Refined form spacing, footer tap targets and mobile search input sizing; added completed-step styling and explicit edit actions in the booking review.
+- Improved mobile veterinary heading wrapping and responsive image selection for tall crops.
+- Keyboard Escape closes the mobile menu; leaving the header by keyboard also closes it. FAQ disclosure opens normally.
+- Search with whitespace and mixed case found Apata; conflicting area filter showed the empty state; clear restored all eight branches.
+- Booking: preselected Apata; past date blocked; future date/time retained through Edit branch; changed to Olomi; malformed email blocked with native validation.
+- Local-only POST receipt verified name, email, department, branch in subject/message, preferred date/time, form identifier and empty honeypot. No requests were sent to the live Finrel endpoint.
+- Contact: Veterinary topic preselection and all outgoing contact fields verified using the same local-only receiver.
+- Forms open their result in a new tab, with an honest handoff notice on the original tab. They do not claim booking confirmation or successful email delivery.
+
+Before activating real customer submissions, Finrel should confirm the WordPress recipient, mail delivery, anti-spam handling and acceptance of the corrected department values. The original form still lists unrelated template departments (Dentistry, Neurology, Diagnostic Imaging, Pediatrics); we have not invented matching medical services. This dependency cannot be verified from frontend code alone.

@@ -5,6 +5,8 @@ export const company = {
   office: 'No. 7, Akobo Housing Estate, General Gas, Ibadan, Oyo State, Nigeria.',
   officePhone: '08174993652', officeTel: '+2348174993652',
   shop: 'https://finrelonline.com/', appointment: 'https://finrelpharmacy.com/?page_id=954',
+  // Recheck the external store before changing this: DNS lookup failed on 25 September 2026.
+  shopAvailable: false,
   logo: 'finrels-logo.png', favicon: 'finrels-logo-Fav-1.png',
   socials: [{label:'Instagram',url:'https://www.instagram.com/finrelpharmacy/'},{label:'Facebook',url:'https://www.facebook.com/finrelpharmacy1'}],
   founded: 2014, opened: '1 August 2015',
@@ -38,7 +40,7 @@ export const team = [
 export const statistics = [{value:'2015',label:'Our first doors opened'},{value:String(branches.length).padStart(2,'0'),label:'Locations in our directory'},{value:'Ibadan',label:'Our home. Our community.'}];
 export const faqs = [
   {question:'How do I request a pharmacist appointment?',answer:'Choose a branch and a preferred date on our appointment page. Your request is handled through Finrel’s existing contact form. Contact the branch to confirm availability; submitting a request does not confirm a booking.'},
-  {question:'Can I shop online?',answer:'Yes. Our Shop Online links take you to finrelonline.com, Finrel’s existing store. Check product availability and delivery arrangements there, or call customer care if you need help.'},
+  {question:'Can I shop online?',answer:company.shopAvailable?'Visit finrelonline.com, Finrel’s existing store, to check products and delivery arrangements. Call customer care if you need help.':'Our online store is currently unreachable. Use Shop Online for alternative ways to contact Finrel about products and ordering, or call customer care on '+company.care+'.'},
   {question:'Which branch provides veterinary care?',answer:'Please call customer care before travelling so the team can direct you to a suitable branch and confirm veterinary availability.'}
 ];
 export const testimonials = []; // No verified testimonials supplied.

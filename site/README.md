@@ -1,6 +1,6 @@
 # Finrel website redesign
 
-A complete, responsive, eight-page corporate website with a custom 404 page. The design preserves Finrel’s original logo, green/orange identity, authentic photography and business details. It translates the supplied Cénée screenshot into a split photographic hero, editorial type, open grids, full-width photographic sections, compact navigation and restrained interaction styling.
+A complete, responsive, nine-page corporate website with a custom 404 page. The design preserves Finrel’s original logo, green/orange identity, authentic photography and business details. It translates the supplied Cénée screenshot into a split photographic hero, editorial type, open grids, full-width photographic sections, compact navigation and restrained interaction styling.
 
 ## Run locally
 
@@ -29,13 +29,13 @@ The `dist` directory contains the ready-to-serve site. HTML is rendered at build
 
 ## Pages
 
-`/`, `/about/`, `/services/`, `/veterinary/`, `/branches/`, `/contact/`, `/appointments/`, `/privacy/`.
+`/`, `/about/`, `/services/`, `/veterinary/`, `/branches/`, `/contact/`, `/appointments/`, `/privacy/`, `/shop/`.
 
-Online store links go directly to `https://finrelonline.com/`. There is no replacement checkout, invented catalogue or invented pricing.
+The online store domain failed DNS resolution on 25 September 2026. `company.shopAvailable` is therefore false: shopping CTAs lead to `/shop/`, which offers customer-care and branch alternatives while retaining the original external store link. Once the store is verified working again, set `shopAvailable: true` and rebuild to restore direct store links. There is no replacement checkout, catalogue or pricing.
 
 ## Forms and integrations
 
-Contact and appointment forms submit by normal HTTPS POST to `https://finrelpharmacy.com/?page_id=954` using the original form field names and form identifier. The browser transfers to the existing website for processing. No success message is fabricated locally. Frontend validation and the outgoing field mapping were verified; actual delivery has NOT been tested by sending a live enquiry.
+Contact and appointment forms submit by normal HTTPS POST to `https://finrelpharmacy.com/?page_id=954` using the original form field names and form identifier. The response opens in a separate tab, keeping the redesigned site available. The local status explains the handoff without claiming success. No success message is fabricated locally. Frontend validation and the outgoing field mapping were verified using a local-only POST receiver; actual delivery has NOT been tested by sending a live enquiry.
 
 Before replacing the original WordPress website, retain its functioning submission endpoint or connect a verified replacement. Removing that endpoint would break form delivery. Confirm the existing form’s recipient, spam handling and acceptance of the corrected department values. Branch availability must be confirmed by Finrel; this is an appointment request, not a scheduling system.
 
@@ -43,7 +43,7 @@ Directions use Google Maps search URLs based on the published branch addresses. 
 
 ## Production handover
 
-The current deliverable is local and has not replaced the live Finrel website. Serve `dist/` on an HTTPS static host that supports directory index pages and the custom `404.html`. The Sites publishing skill became unavailable in the installed plugin directories during this session; no hosted deployment was attempted.
+The presentation site is hosted at https://finrel-web.vercel.app/ from `Dee-08/finrel-redesign`. The root `vercel.json` builds `site/` and publishes `site/dist`. The original finrelpharmacy.com website remains unchanged. See the repository root README for VS Code Live Server setup.
 
 Set `SITE_ORIGIN` to the verified production origin before building to generate canonical URLs, Open Graph URLs and `sitemap.xml`. Without a configured origin, the preview does not pretend to be the production website.
 

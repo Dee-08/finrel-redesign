@@ -15,13 +15,19 @@ for(const file of files){
   assert.equal(ids.length,new Set(ids).size,file+' contains duplicate IDs');
   for(const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)){
     const href=match[1];if(!href.startsWith('/')&&!href.startsWith('#'))continue;
-    const url=new URL(href,'http://localhost'+path.relative(root,file).replaceAll('\\','/').replace(/index\.html$/,''));
+    const url=new URL(href,'http://localhost/'+path.relative(root,file).replaceAll('\\','/').replace(/index\.html$/,''));
     let target=href.startsWith('#')?file:path.join(root,decodeURIComponent(url.pathname));
     if((await stat(target)).isDirectory())target=path.join(target,'index.html');
     await stat(target);links++;
     if(url.hash){const content=await readFile(target,'utf8');assert.ok(content.includes(`id="${url.hash.slice(1)}"`),file+' missing anchor '+href);}
   }
   for(const img of html.matchAll(/<img\b[^>]+>/g)){assert.match(img[0],/alt="[^"]*"/);assert.match(img[0],/width="\d+"/);assert.match(img[0],/height="\d+"/);images++;}
+  for(const anchor of html.matchAll(/<a\b[^>]+>/g)){
+    if(/href="https?:\/\//.test(anchor[0])){
+      assert.match(anchor[0],/target="_blank"/,file+' external link must open a new tab');
+      assert.match(anchor[0],/rel="noopener noreferrer"/,file+' external link must isolate its opener');
+    }
+  }
   for(const form of html.matchAll(/<form\b[^>]+>/g)){if(form[0].includes('method="post"'))assert.ok(form[0].includes('https://finrelpharmacy.com/?page_id=954'),'Forms must use the existing Finrel endpoint');}
 }
 assert.equal(services.length,4);

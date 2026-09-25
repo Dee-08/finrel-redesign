@@ -12,3 +12,66 @@
 .directory-head>div,.contact-opening>div,.booking-page>aside{min-width:0}.branch-actions>a{min-height:38px;display:inline-flex;align-items:center}.footer-top a{min-height:28px}.contact-form label,.booking-panel label{font-size:14px}.hero-kicker{align-self:flex-start;text-shadow:0 1px 7px #000}
 @media(max-width:560px){.home-hero h1{font-size:clamp(48px,13.8vw,70px)}.home-hero:after{background:linear-gradient(180deg,#14231199 0%,#14231120 22%,#14231165 45%,#142311de 100%)}.directory-head h1{font-size:clamp(34px,10.8vw,47px)}.quick-access a>span:nth-child(2),.service-tile p,.branch-address address,.contact-actions p{font-size:14px}.branch-actions>a{min-height:44px}.footer-top a{min-height:35px}.branch-actions .small-link{font-size:12px}.contact-form label,.booking-panel label{font-size:14px}.hero-bottom>div{flex-wrap:wrap}.branch-address{min-width:0}.branch-row{grid-template-columns:75px minmax(0,1fr)}.branch-image{width:75px}.directory-head .text-link{gap:20px}.photo-corner strong{font-size:13px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* Presentation polish: preserve the editorial grid while tightening interaction spacing. */
+button:focus-visible{outline-offset:4px}
+input,select,textarea{scroll-margin-top:120px}
+fieldset legend{scroll-margin-top:125px}
+.site-header nav{overscroll-behavior:contain}
+.form-grid>div{min-width:0}
+.form-note{font-size:13px}
+.form-handoff:empty{display:none}
+.form-handoff{margin-top:24px;border-left:3px solid var(--green);padding:4px 0 4px 16px;font-size:14px;line-height:1.65}
+.booking-page{grid-template-areas:"intro panel" "help panel";grid-template-rows:auto 1fr;row-gap:32px;align-content:start}
+.booking-page>aside{grid-area:intro}
+.booking-panel{grid-area:panel}
+.booking-page>.booking-help{grid-area:help;margin-top:0}
+.booking-panel .selected-branch{min-height:120px;padding-top:8px}
+.step-progress li.is-complete{border-color:var(--green);color:var(--deep)}
+.review-actions{display:flex;gap:24px;flex-wrap:wrap;margin-top:12px;border-top:1px solid var(--line);padding-top:4px}
+.review-actions button{font-size:13px;text-decoration:underline;text-underline-offset:4px}
+.booking-review p{line-height:1.8}
+.footer-top a{display:flex;align-items:center;min-height:36px;margin:2px 0}
+.shopping-page{display:grid;grid-template-columns:1.15fr 1fr;gap:8%;padding-top:55px;align-items:start}
+.shopping-page h1{font-size:clamp(44px,5.3vw,80px);margin:28px 0}
+.shopping-lead{max-width:470px;font-size:17px}
+.shopping-status{margin-top:36px;padding-top:28px;border-top:1px solid var(--line)}
+.shopping-status h2{font-size:25px;letter-spacing:-.025em;margin-bottom:18px}
+.shopping-status>p{max-width:470px}
+.shopping-actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;margin:26px 0 18px}
+.shopping-status .small-note{font-size:13px;color:var(--muted)}
+.shopping-status .small-note .text-link{font-size:inherit;gap:7px;padding:0;border:0;text-decoration:underline;text-underline-offset:4px}
+.shopping-status .small-note .text-link span{font-size:15px}
+.shopping-page figure{margin:0}
+.shopping-page figure img{width:100%;height:620px;object-fit:cover;object-position:25% center}
+.shopping-page figcaption{font-size:12px;color:var(--muted);padding-top:14px}
+@media(max-width:850px){
+  input,select,textarea{scroll-margin-top:100px}
+  fieldset legend{scroll-margin-top:110px}
+  .booking-page{grid-template-areas:"intro" "panel" "help";grid-template-rows:auto;gap:32px}
+  .booking-panel{max-width:none}
+  .booking-page>.booking-help{max-width:none}
+  .shopping-page{gap:5%;grid-template-columns:1.2fr 1fr}
+  .shopping-page figure img{height:500px}
+}
+@media(max-width:560px){
+  .booking-page h1{font-size:clamp(44px,13.2vw,57px)}
+  .booking-panel{margin:0;width:100%;padding:26px 20px}
+  .booking-panel .button{font-size:13px;min-height:50px}
+  .booking-panel .form-buttons{gap:12px 18px}
+  .booking-panel .form-buttons>.button{flex:1}
+  .booking-panel legend{font-size:24px;margin-bottom:24px}
+  .booking-panel .selected-branch{min-height:0;padding-bottom:26px}
+  .booking-page>.booking-help{padding-top:24px}
+  .branch-filters input{font-size:16px}
+  .reset-filter{min-height:44px;display:flex;align-items:center}
+  .footer-top a{min-height:44px;margin:0}
+  .footer-top h2{margin-bottom:14px}
+  .quick-access .small-label{padding-right:20px}
+  .quick-access a>span:last-child{right:3px}
+  .shopping-page{grid-template-columns:1fr;gap:36px;padding-top:35px}
+  .shopping-page h1{font-size:clamp(40px,11.5vw,53px)}
+  .shopping-page figure img{height:280px}
+}
+
+@media(max-width:560px){.vet-hero h1{font-size:clamp(36px,11.2vw,53px)}.vet-feature-copy h2{font-size:clamp(36px,10.8vw,43px)}}

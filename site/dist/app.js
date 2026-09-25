@@ -1,10 +1,13 @@
 const menuButton=document.querySelector('.menu-toggle');
 const menu=document.querySelector('#main-nav');
-function closeMenu(){menu.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}
-menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menu.classList.toggle('open',open);menuButton.setAttribute('aria-expanded',String(open));});
+function setMenu(open){menu.classList.toggle('open',open);menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Close menu':'Open menu');}
+function closeMenu(){setMenu(false);}
+menuButton?.addEventListener('click',()=>setMenu(menuButton.getAttribute('aria-expanded')!=='true'));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){closeMenu();menuButton.focus();}});
 document.addEventListener('click',e=>{if(!e.target.closest('.site-header'))closeMenu();});
 menu?.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
+document.querySelector('.site-header')?.addEventListener('focusout',e=>{if(e.relatedTarget&&!e.currentTarget.contains(e.relatedTarget))closeMenu();});
+matchMedia('(min-width: 851px)').addEventListener('change',closeMenu);
 
 // Branch filtering operates on rendered data and never needs a remote request.
 const search=document.querySelector('#branch-search');
@@ -34,10 +37,22 @@ if(booking){
   const requested=new URLSearchParams(location.search).get('branch');if([...branch.options].some(o=>o.value===requested))branch.value=requested;
   function updateBranch(){const option=branch.selectedOptions[0];const panel=document.querySelector('#selected-branch');panel.replaceChildren();const p=document.createElement('p');p.textContent=option.dataset.address||'Choose a branch to see its address and contact number.';panel.append(p);if(option.dataset.phone){const a=document.createElement('a');a.href='tel:+234'+option.dataset.phone.slice(1);a.textContent='Call '+option.dataset.phone;panel.append(a);}}
   function updateRequest(){const chosen=branch.selectedOptions[0];const readable=date.value?new Date(date.value+'T12:00:00').toLocaleDateString('en-NG',{day:'numeric',month:'long',year:'numeric'}):'';const summary=`${chosen.textContent} · Pharmacist consultation · ${readable}${time.value?' at '+time.value:''}`;document.querySelector('#review-summary').textContent=summary;document.querySelector('#booking-subject').value='Pharmacist appointment request — '+chosen.textContent;document.querySelector('#booking-datetime').value=date.value+(time.value?' '+time.value:'');document.querySelector('#booking-message').value=summary+'. Please contact me by email to confirm availability.';}
-  function showStep(next){step=next;fieldsets.forEach(f=>{f.hidden=Number(f.dataset.step)!==step;});document.querySelectorAll('.step-progress li').forEach((li,i)=>{if(i===step-1)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});updateRequest();const legend=fieldsets[step-1].querySelector('legend');legend.tabIndex=-1;legend.focus();}
+  function showStep(next){step=next;fieldsets.forEach(f=>{f.hidden=Number(f.dataset.step)!==step;});document.querySelectorAll('.step-progress li').forEach((li,i)=>{if(i===step-1)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');li.classList.toggle('is-complete',i<step-1);});updateRequest();const legend=fieldsets[step-1].querySelector('legend');legend.tabIndex=-1;legend.focus();}
   booking.querySelectorAll('.next-step').forEach(button=>button.addEventListener('click',()=>{const fields=[...fieldsets[step-1].querySelectorAll('input,select')];for(const field of fields){if(!field.reportValidity())return;}showStep(Math.min(3,step+1));}));
-  booking.querySelectorAll('.back-step').forEach(button=>button.addEventListener('click',()=>showStep(Math.max(1,step-1))));
+  booking.querySelectorAll('.back-step:not([data-edit-step])').forEach(button=>button.addEventListener('click',()=>showStep(Math.max(1,step-1))));
   booking.addEventListener('submit',e=>{if(step!==3){e.preventDefault();fieldsets[step-1].querySelector('.next-step').click();return;}for(const fieldset of fieldsets){for(const field of fieldset.querySelectorAll('input,select')){if(!field.checkValidity()){e.preventDefault();showStep(Number(fieldset.dataset.step));field.reportValidity();return;}}}if(date.value<localToday){e.preventDefault();showStep(2);date.setCustomValidity('Please choose today or a future date.');date.reportValidity();return;}updateRequest();});
+  booking.querySelectorAll('[data-edit-step]').forEach(button=>button.addEventListener('click',()=>showStep(Number(button.dataset.editStep))));
   date.addEventListener('input',()=>date.setCustomValidity(''));
   branch.addEventListener('change',updateBranch);updateBranch();
 }
+
+// A new tab handles the legacy response; never claim delivery or a confirmed booking here.
+document.querySelectorAll('form[method="post"]').forEach(form=>{
+  const status=document.createElement('p');
+  status.className='form-handoff';status.setAttribute('role','status');
+  form.append(status);
+  form.addEventListener('submit',event=>{
+    if(event.defaultPrevented)return;
+    status.textContent='Finrel’s form is opening in a new tab. Check that page for the result. If it does not open, please call customer care.';
+  });
+});
